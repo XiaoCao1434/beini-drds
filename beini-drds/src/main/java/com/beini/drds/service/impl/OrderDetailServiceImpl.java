@@ -1,7 +1,6 @@
 package com.beini.drds.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.beini.drds.mapper.OrderDetailMapper;
 import com.beini.drds.service.OrderDetailService;
@@ -9,10 +8,10 @@ import com.beini.order.entity.OrderDetail;
 import com.beini.paging.domain.Paging;
 import com.beini.paging.domain.Pagingable;
 
-@Service
+//@Service
 public class OrderDetailServiceImpl implements OrderDetailService {
 	@Autowired
-	private OrderDetailMapper mapper;
+	private OrderDetailMapper mapper = null;
 
 	@Override
 	public Paging<OrderDetail> findAll(Pagingable pageable) {

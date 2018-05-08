@@ -1,7 +1,6 @@
 package com.beini.drds.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.beini.drds.mapper.OrderMapper;
 import com.beini.drds.service.OrderService;
@@ -9,7 +8,7 @@ import com.beini.order.entity.Order;
 import com.beini.paging.domain.Paging;
 import com.beini.paging.domain.Pagingable;
 
-@Service
+//@Service
 public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderMapper mapper;

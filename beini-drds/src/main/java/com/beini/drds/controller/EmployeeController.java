@@ -10,14 +10,45 @@ import org.springframework.web.bind.annotation.RestController;
 import com.beini.drds.entity.Employee;
 import com.beini.drds.service.EmployeeService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+/**
+ * 员工控制器
+ * @author lb_chen
+ *
+ */
+@Api(value = "员工控制器")
 @RestController
 @RequestMapping("/employee")
+@Slf4j
 public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
-	
+	@ApiOperation(value = "保存员工信息到数据库")
 	@GetMapping("/save")
 	public String saveEmployee() {
+		Employee employee = employeeService.save(getRondomEmployee());
+		return employee.getId()+employee.getName1();
+	}
+	@ApiOperation(value = "保存员工信息到保存队列")
+	@GetMapping("/saveToQueue")
+	public String saveToQueue() {
+		log.error("saveToQueue");
+		//return ""+employeeService.saveToSaveQueue(getRondomEmployee());
+		return null;
+	}
+	@ApiOperation(value = "从保存队列中取出员工信息")
+	@GetMapping("/getFromSaveQueue")
+	public Employee getFromSaveQueue() {
+		return employeeService.getFromSaveQueue();
+	}
+	@ApiOperation(value = "从延迟队列中取出员工信息")
+	@GetMapping("/getFromDelayQueue")
+	public Employee getFromDelayQueue() {
+		return employeeService.getFromDelayQueue();
+	}
+	private Employee getRondomEmployee() {
 		Employee employee = new Employee();
 		employee.setName1(UUID.randomUUID().toString());
 		employee.setName2(UUID.randomUUID().toString());
@@ -78,7 +109,6 @@ public class EmployeeController {
 		employee.setName58(UUID.randomUUID().toString());
 		employee.setName59(UUID.randomUUID().toString());
 		employee.setName60(UUID.randomUUID().toString());
-		employee = employeeService.save(employee);
-		return employee.getId()+employee.getName1();
+		return employee;
 	}
 }

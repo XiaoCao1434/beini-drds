@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.beini.drds.mapper.OrderMapper;
 import com.beini.drds.service.OrderService;
 import com.beini.order.entity.Order;
-import com.beini.paging.domain.Paging;
-import com.beini.paging.domain.Pagingable;
+import com.beini.paging.domain.Page;
+import com.beini.paging.domain.Pageable;
 
 //@Service
 public class OrderServiceImpl implements OrderService {
@@ -14,7 +14,7 @@ public class OrderServiceImpl implements OrderService {
 	private OrderMapper mapper;
 
 	@Override
-	public Paging<Order> findAll(Pagingable pageable) {
+	public Page<Order> findAll(Pageable pageable) {
 		return mapper.findAll(pageable);
 	}
 

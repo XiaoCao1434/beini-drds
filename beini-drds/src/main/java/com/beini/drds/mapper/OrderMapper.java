@@ -1,12 +1,12 @@
 package com.beini.drds.mapper;
 
 import com.beini.order.entity.Order;
-import com.beini.paging.domain.Paging;
-import com.beini.paging.domain.Pagingable;
+import com.beini.paging.domain.Page;
+import com.beini.paging.domain.Pageable;
 
 public interface OrderMapper {
 
-	Paging<Order> findAll(Pagingable pageable);
+	Page<Order> findAll(Pageable pageable);
 
 	Order findOne(String id);
 

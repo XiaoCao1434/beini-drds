@@ -1,8 +1,8 @@
 package com.beini.drds.mapper;
 
 import com.beini.order.entity.OrderDetail;
-import com.beini.paging.domain.Paging;
-import com.beini.paging.domain.Pagingable;
+import com.beini.paging.domain.Page;
+import com.beini.paging.domain.Pageable;
 
 public interface OrderDetailMapper {
 
@@ -10,9 +10,9 @@ public interface OrderDetailMapper {
 
 	OrderDetail save(OrderDetail bean);
 
-	Paging<OrderDetail> findAllByOrderUuid(String orderId, Pagingable pageable);
+	Page<OrderDetail> findAllByOrderUuid(String orderId, Pageable pageable);
 
-	Paging<OrderDetail> findAll(Pagingable pageable);
+	Page<OrderDetail> findAll(Pageable pageable);
 
 	OrderDetail findOne(String id);
 

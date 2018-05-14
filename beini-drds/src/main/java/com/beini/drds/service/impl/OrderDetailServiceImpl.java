@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.beini.drds.mapper.OrderDetailMapper;
 import com.beini.drds.service.OrderDetailService;
 import com.beini.order.entity.OrderDetail;
-import com.beini.paging.domain.Paging;
-import com.beini.paging.domain.Pagingable;
+import com.beini.paging.domain.Page;
+import com.beini.paging.domain.Pageable;
 
 //@Service
 public class OrderDetailServiceImpl implements OrderDetailService {
@@ -14,12 +14,12 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	private OrderDetailMapper mapper = null;
 
 	@Override
-	public Paging<OrderDetail> findAll(Pagingable pageable) {
+	public Page<OrderDetail> findAll(Pageable pageable) {
 		return mapper.findAll(pageable);
 	}
 
 	@Override
-	public Paging<OrderDetail> findAll(String orderId, Pagingable pageable) {
+	public Page<OrderDetail> findAll(String orderId, Pageable pageable) {
 		return mapper.findAllByOrderUuid(orderId, pageable);
 	}
 

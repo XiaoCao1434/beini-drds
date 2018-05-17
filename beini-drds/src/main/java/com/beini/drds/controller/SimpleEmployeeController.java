@@ -12,6 +12,7 @@ import com.beini.drds.service.SimpleEmployeeService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 /**
  * 简单员工控制器
@@ -31,6 +32,15 @@ public class SimpleEmployeeController {
 		SimpleEmployee employee = employeeService.save(getRondomEmployee());
 		return employee.getId()+employee.getName1();
 	}
+	
+	@ApiOperation(value = "保存员工信息到数据库")
+	@GetMapping("/saveInfo")
+	public String saveEmployeeInfo(
+			@ApiParam("员工信息")SimpleEmployee simpleEmployee) {
+		SimpleEmployee employee = employeeService.save(simpleEmployee);
+		return employee.getId()+employee.getName1();
+	}
+	
 	@ApiOperation(value = "保存员工信息到保存队列")
 	@GetMapping("/saveToQueue")
 	public String saveToQueue() {

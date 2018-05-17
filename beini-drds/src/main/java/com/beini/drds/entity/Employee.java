@@ -6,16 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+@ApiModel(value="员工信息类（一个Integer字段ID和59个string字段）")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee implements Serializable{
 	private static final long serialVersionUID = 5989L;
+	@ApiModelProperty(value="主键ID,如果新增时，可以不填写，如果是更新则必须为已有的ID")
 	@Id
 	@GeneratedValue
 	private Integer id;

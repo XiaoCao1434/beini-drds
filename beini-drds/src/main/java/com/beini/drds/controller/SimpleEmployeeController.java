@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,6 +42,15 @@ public class SimpleEmployeeController {
 		return employee.getId()+employee.getName1();
 	}
 	
+	@ApiOperation(value = "保存员工信息到数据库22")
+	@GetMapping("/save/{num}")
+	public String saveEmployeeInfoNum(@PathVariable("num") int num) {
+		SimpleEmployee employee= null;
+		for(int i = 0;i< num;i++) {
+			employee = employeeService.save(getRondomEmployee());
+		}
+		return employee.getId()+employee.getName1();
+	}
 	@ApiOperation(value = "保存员工信息到保存队列")
 	@GetMapping("/saveToQueue")
 	public String saveToQueue() {

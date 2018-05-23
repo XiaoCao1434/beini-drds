@@ -1,4 +1,6 @@
-  结合DRUIS的DRDS项目结构（6步骤）
+ /*慕课网手记链接：https://www.imooc.com/article/30638*/ 
+  
+  结合DRUIS的DRDS项目结构（5步骤）
   1.项目依赖包构建
   2.增加druid的spring监控配置
   3.修改项目配置文件(application.properties)

@@ -17,6 +17,7 @@ import io.swagger.annotations.ApiParam;
 
 /**
  * 简单员工控制器
+ * 
  * @author lb_chen
  *
  */
@@ -24,48 +25,34 @@ import io.swagger.annotations.ApiParam;
 @RestController
 @RequestMapping("/employee1")
 public class SimpleEmployeeController {
-	
+
 	@Autowired
 	private SimpleEmployeeService employeeService;
+
 	@ApiOperation(value = "保存员工信息到数据库")
 	@GetMapping("/save")
 	public String saveEmployee() {
 		SimpleEmployee employee = employeeService.save(getRondomEmployee());
-		return employee.getId()+employee.getName1();
+		return employee.getId() + employee.getName1();
 	}
-	
+
 	@ApiOperation(value = "保存员工信息到数据库")
 	@GetMapping("/saveInfo")
-	public String saveEmployeeInfo(
-			@ApiParam("员工信息")SimpleEmployee simpleEmployee) {
+	public String saveEmployeeInfo(@ApiParam("员工信息") SimpleEmployee simpleEmployee) {
 		SimpleEmployee employee = employeeService.save(simpleEmployee);
-		return employee.getId()+employee.getName1();
+		return employee.getId() + employee.getName1();
 	}
-	
-	@ApiOperation(value = "保存员工信息到数据库22")
+
+	@ApiOperation(value = "保存指定员工数量信息到数据库")
 	@GetMapping("/save/{num}")
 	public String saveEmployeeInfoNum(@PathVariable("num") int num) {
-		SimpleEmployee employee= null;
-		for(int i = 0;i< num;i++) {
+		SimpleEmployee employee = null;
+		for (int i = 0; i < num; i++) {
 			employee = employeeService.save(getRondomEmployee());
 		}
-		return employee.getId()+employee.getName1();
+		return employee.getId() + employee.getName1();
 	}
-	@ApiOperation(value = "保存员工信息到保存队列")
-	@GetMapping("/saveToQueue")
-	public String saveToQueue() {
-		return ""+employeeService.saveToSaveQueue(getRondomEmployee());
-	}
-	@ApiOperation(value = "从保存队列中取出员工信息")
-	@GetMapping("/getFromSaveQueue")
-	public SimpleEmployee getFromSaveQueue() {
-		return employeeService.getFromSaveQueue();
-	}
-	@ApiOperation(value = "从延迟队列中取出员工信息")
-	@GetMapping("/getFromDelayQueue")
-	public SimpleEmployee getFromDelayQueue() {
-		return employeeService.getFromDelayQueue();
-	}
+
 	private SimpleEmployee getRondomEmployee() {
 		SimpleEmployee employee = new SimpleEmployee();
 		employee.setName1(UUID.randomUUID().toString());

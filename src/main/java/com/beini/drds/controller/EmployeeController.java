@@ -14,8 +14,10 @@ import com.beini.drds.service.EmployeeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+
 /**
  * 员工控制器
+ * 
  * @author lb_chen
  *
  */
@@ -26,38 +28,31 @@ import lombok.extern.slf4j.Slf4j;
 public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
+
 	@ApiOperation(value = "保存员工信息到数据库")
 	@GetMapping("/save")
 	public String saveEmployee() {
 		Employee employee = employeeService.save(getRondomEmployee());
-		return employee.getId()+employee.getName1();
+		return employee.getId() + employee.getName1();
 	}
-	@ApiOperation(value = "保存员工信息到数据库22")
+
+	@ApiOperation(value = "保存指定员工数量信息到数据库")
 	@GetMapping("/save/{num}")
 	public String saveEmployeeNum(@PathVariable("num") int num) {
-		Employee employee= null;
-		for(int i = 0;i< num;i++) {
+		Employee employee = null;
+		for (int i = 0; i < num; i++) {
 			employee = employeeService.save(getRondomEmployee());
 		}
-		return employee.getId()+employee.getName1();
+		return employee.getId() + employee.getName1();
 	}
+
 	@ApiOperation(value = "保存员工信息到保存队列")
 	@GetMapping("/saveToQueue")
 	public String saveToQueue() {
 		log.error("saveToQueue");
-		//return ""+employeeService.saveToSaveQueue(getRondomEmployee());
 		return null;
 	}
-	@ApiOperation(value = "从保存队列中取出员工信息")
-	@GetMapping("/getFromSaveQueue")
-	public Employee getFromSaveQueue() {
-		return employeeService.getFromSaveQueue();
-	}
-	@ApiOperation(value = "从延迟队列中取出员工信息")
-	@GetMapping("/getFromDelayQueue")
-	public Employee getFromDelayQueue() {
-		return employeeService.getFromDelayQueue();
-	}
+
 	private Employee getRondomEmployee() {
 		Employee employee = new Employee();
 		employee.setName1(UUID.randomUUID().toString());

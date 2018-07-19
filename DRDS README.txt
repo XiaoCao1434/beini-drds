@@ -65,7 +65,7 @@ spring.datasource.url=jdbc:mysql://127.0.0.1:3306/shop2?useUnicode=true&autoReco
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.username=root
 spring.datasource.password=root
-spring.datasource.type: com.alibaba.druid.pool.DruidDataSource
+spring.datasource.type= com.alibaba.druid.pool.DruidDataSource
 
 #druid standard config
 spring.datasource.maxActive=30
@@ -80,10 +80,10 @@ spring.datasource.testOnBorrow=false
 spring.datasource.testOnReturn=false
 
 #druid extends config
-spring.datasource.filters: stat,wall,log4j
-spring.datasource.poolPreparedStatements: true
-spring.datasource.maxOpenPreparedStatements: 20
-spring.datasource.logSlowSql: true
+spring.datasource.filters= stat,wall,log4j
+spring.datasource.poolPreparedStatements= true
+spring.datasource.maxOpenPreparedStatements= 20
+spring.datasource.logSlowSql= true
 
 步骤4：
 新建以下连接池配置类（建议配置类所在目录为项目启动类下的直接子包下）:
